@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Booking Lab - Portafolio de Servicios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* PDF specific styles */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        body {
+            background-color: white !important;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact !important;
+            print-color-adjust: exact !important;
+            font-size: 11pt;
+            color: var(--navy-dark);
+        }
+        .pdf-page {
+            width: 210mm;
+            height: 297mm;
+            padding: 20mm;
+            box-sizing: border-box;
+            background: white;
+            position: relative;
+            page-break-after: always;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .pdf-page.bg-dark {
+            background: var(--navy-dark) !important;
+            color: white !important;
+        }
+        
+        /* Hide stuff that is not needed for PDF */
+        header, footer, .lang-switcher, .menu-toggle, nav {
+            display: none !important;
+        }
+
+        .pdf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--accent-vibrant);
+            padding-bottom: 5mm;
+            margin-bottom: 10mm;
+        }
+        .pdf-header .logo {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--navy-dark);
+        }
+        .bg-dark .pdf-header .logo {
+            color: white;
+        }
+        .pdf-header .logo span {
+            color: var(--accent-vibrant);
+        }
+        
+        .pdf-footer {
+            position: absolute;
+            bottom: 15mm;
+            left: 20mm;
+            right: 20mm;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding-top: 5mm;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .bg-dark .pdf-footer {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Adjustments for layout in A4 */
+        .cover-page {
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        .cover-page h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+        .cover-page p {
+            font-size: 1.5rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 80%;
+        }
+        
+        .section-title {
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 2.2rem;
+        }
+
+        /* Tweak cards for print */
+        .problem-grid-print {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15mm;
+        }
+        .problem-card {
+            box-shadow: none !important;
+            border: 1px solid rgba(0,0,0,0.1) !important;
+            padding: 15mm !important;
+            break-inside: avoid;
+            background: #fafafa !important;
+        }
+        .problem-card[style*="border-color"] {
+            border: 2px solid var(--accent-vibrant) !important;
+            background: linear-gradient(to bottom, #ffffff, #f9fbfc) !important;
+        }
+        
+        .quote-block {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--navy-dark);
+            text-align: center;
+            line-height: 1.4;
+            margin-top: 50mm;
+        }
+        
+        .joan-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-vibrant);
+            margin-bottom: 1rem;
+        }
+
+        .results-grid-print {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10mm;
+            margin-top: 20mm;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1: COVER -->
+    <div class="pdf-page bg-dark cover-page">
+        <div style="font-size: 2.5rem; font-weight:700; margin-bottom: 2rem;">Booking <span style="color: var(--accent-vibrant);">Lab</span></div>
+        <h1 style="color: white;">Estrategia de Ventas Online para Turismo.</h1>
+        <p>Dejamos de "subir productos" para empezar a escalar ventas.</p>
+        
+        <div style="margin-top: 20mm; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 10mm;">
+            <p style="font-size: 1.1rem; margin:0;"><strong>Portafolio de Servicios Corporativos</strong></p>
+            <p style="font-size: 1rem; margin:0; margin-top: 5px;">booking-lab.com</p>
+        </div>
+    </div>
+
+    <!-- PAGE 2: EL PROBLEMA -->
+    <div class="pdf-page">
+        <div class="pdf-header">
+            <div class="logo">Booking <span>Lab</span></div>
+            <div>El Contexto</div>
+        </div>
+        
+        <div class="quote-block">
+            "El 80% de las agencias pequeñas pierden un 15% de su margen por una mala configuración en OTAs y una web que no convierte."
+        </div>
+        
+        <p style="font-size: 1.4rem; color: var(--text-muted); text-align: center; margin-top: 20mm; padding: 0 10mm; line-height: 1.6;">
+            En <strong>Booking Lab</strong> no hacemos marketing genérico. Somos tu laboratorio de optimización. Analizamos datos, corregimos errores y ejecutamos la estrategia que las grandes agencias ya usan, adaptada a tu tamaño.
+        </p>
+
+        <div class="pdf-footer">
+            <span>Confidencial - Propiedad de Booking Lab</span>
+            <span>booking-lab.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 3: RESULTADOS -->
+    <div class="pdf-page bg-dark">
+        <div class="pdf-header">
+            <div class="logo">Booking <span>Lab</span></div>
+            <div>Track Record</div>
+        </div>
+
+        <h2 style="font-size: 2.5rem; text-align: center; margin-top: 30mm; color: white;">"No vendemos promesas, entregamos métricas."</h2>
+        
+        <div class="results-grid-print">
+            <div class="result-item">
+                <div style="color: var(--accent-vibrant); font-size: 4rem; font-weight: 700; line-height:1;">+150%</div>
+                <p style="font-size: 1.2rem; margin-top:10px;">Incremento medio en visibilidad en OTAs</p>
+            </div>
+            <div class="result-item">
+                <div style="color: var(--accent-vibrant); font-size: 4rem; font-weight: 700; line-height:1;">40%</div>
+                <p style="font-size: 1.2rem; margin-top:10px;">Ahorro en comisiones vía Venta Directa</p>
+            </div>
+            <div class="result-item">
+                <div style="color: var(--accent-vibrant); font-size: 4rem; font-weight: 700; line-height:1;">3 Dígitos</div>
+                <p style="font-size: 1.2rem; margin-top:10px;">De crecimiento en facturación el 1er año</p>
+            </div>
+        </div>
+
+        <div class="pdf-footer">
+            <span>Confidencial - Propiedad de Booking Lab</span>
+            <span>booking-lab.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 4: SERVICIOS 1 y 2 -->
+    <div class="pdf-page">
+        <div class="pdf-header">
+            <div class="logo">Booking <span>Lab</span></div>
+            <div>Nuestra Escalera de Valor (1/2)</div>
+        </div>
+        
+        <h2 class="section-title">Soluciones Estratégicas</h2>
+        <p style="margin-bottom: 10mm; color: var(--text-muted); font-size: 1.1rem;">Intervenimos en cada etapa del embudo de ventas de tu agencia de viajes o tours operativos.</p>
+
+        <div class="problem-grid-print">
+            <div class="problem-card">
+                <div class="icon-svg-lg" style="margin-bottom: 15px; color: var(--accent-vibrant);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+                <h3 style="font-size: 1.6rem; color: var(--navy-dark); margin-bottom: 5px;">01. Análisis de mi agencia</h3>
+                <p style="font-style: italic; color: var(--text-muted); margin-bottom: 15px;">El diagnóstico necesario antes de cualquier tratamiento.</p>
+                <p style="font-size: 1.1rem;"><strong>Qué incluye:</strong> Revisión rápida de tus 3 canales principales, detección de fugas de reserva y análisis de precios frente a la competencia.</p>
+                <p style="font-size: 1.1rem; margin-top: 10px; color: var(--accent-vibrant);"><strong>Resultado:</strong> Un informe ejecutivo con 3 "Quick Wins" para aplicar mañana mismo.</p>
+            </div>
+
+            <div class="problem-card">
+                <div class="icon-svg-lg" style="margin-bottom: 15px; color: var(--accent-vibrant);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M13.5 10.5L21 3"></path><path d="M16 3h5v5"></path><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+                    </svg>
+                </div>
+                <h3 style="font-size: 1.6rem; color: var(--navy-dark); margin-bottom: 5px;">02. Optimización de Canales (SEO + OTAs)</h3>
+                <p style="font-style: italic; color: var(--text-muted); margin-bottom: 15px;">No basta con estar, hay que ser el primero.</p>
+                <p style="font-size: 1.1rem;"><strong>Qué incluye:</strong> SEO técnico para tu web y SEO específico para algoritmos de OTAs. Mejora de conversión (CRO) en fichas de producto.</p>
+                <p style="font-size: 1.1rem; margin-top: 10px; color: var(--accent-vibrant);"><strong>Resultado:</strong> Más visibilidad orgánica y mayor tasa de cierre por cada visita recibida.</p>
+            </div>
+        </div>
+
+        <div class="pdf-footer">
+            <span>Confidencial - Propiedad de Booking Lab</span>
+            <span>booking-lab.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 5: SERVICIOS 3 y 4 -->
+    <div class="pdf-page">
+        <div class="pdf-header">
+            <div class="logo">Booking <span>Lab</span></div>
+            <div>Nuestra Escalera de Valor (2/2)</div>
+        </div>
+
+        <div class="problem-grid-print">
+            <div class="problem-card">
+                <div class="icon-svg-lg" style="margin-bottom: 15px; color: var(--accent-vibrant);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10z"></path>
+                    </svg>
+                </div>
+                <h3 style="font-size: 1.6rem; color: var(--navy-dark); margin-bottom: 5px;">03. Fábrica de Producto y Distribución</h3>
+                <p style="font-style: italic; color: var(--text-muted); margin-bottom: 15px;">Creamos experiencias que el mercado internacional está buscando.</p>
+                <p style="font-size: 1.1rem;"><strong>Qué incluye:</strong> Diseño de producto turístico "gancho", redacción de copy de alto impacto y publicación masiva en las OTAs líderes.</p>
+                <p style="font-size: 1.1rem; margin-top: 10px; color: var(--accent-vibrant);"><strong>Resultado:</strong> Presencia profesional en los escaparates más grandes del mundo con inventario sincronizado.</p>
+            </div>
+
+            <div class="problem-card" style="border: 2px solid #4DB2FF !important; background: linear-gradient(to bottom, #ffffff, #f9fbfc) !important;">
+                <div style="background: var(--navy-dark); color: white; display: inline-block; padding: 4px 12px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; margin-bottom: 15px; text-transform: uppercase;">Servicio Premium</div>
+                <div class="icon-svg-lg" style="margin-bottom: 15px; color: var(--navy-dark);">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line>
+                    </svg>
+                </div>
+                <h3 style="font-size: 1.6rem; color: var(--navy-dark); margin-bottom: 5px;">04. Digitalización 360º (Pack "Llave en Mano")</h3>
+                <p style="font-style: italic; color: var(--text-muted); margin-bottom: 15px;">Transformamos una agencia tradicional en una máquina de venta.</p>
+                <p style="font-size: 1.1rem;"><strong>Qué incluye:</strong> Creación/mejora de web con motor de reservas, estructuración de bases de datos y distribución automatizada.</p>
+                <p style="font-size: 1.1rem; margin-top: 10px; color: var(--accent-vibrant);"><strong>La solución para:</strong> Quien no tiene tiempo o quiere empezar con el pie derecho. Una empresa 100% digitalizada y lista para escalar.</p>
+            </div>
+        </div>
+
+        <div class="pdf-footer">
+            <span>Confidencial - Propiedad de Booking Lab</span>
+            <span>booking-lab.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 6: SOBRE NOSOTROS -->
+    <div class="pdf-page">
+        <div class="pdf-header">
+            <div class="logo">Booking <span>Lab</span></div>
+            <div>¿Quiénes Somos?</div>
+        </div>
+
+        <div style="display: flex; gap: 15mm; margin-top: 15mm;">
+            <div style="flex: 1;">
+                <img src="foto joan portillo.png" alt="Joan Portillo" style="width: 100%; border-radius: 8px; box-shadow: -10px 10px 0px var(--accent-vibrant);">
+            </div>
+            <div style="flex: 2;">
+                <h2 style="font-size: 2rem; color: var(--navy-dark); margin-bottom: 20px; line-height: 1.2;">No somos una agencia de marketing. Somos tu equipo de producto.</h2>
+                <p style="font-size: 1.3rem; color: var(--text-muted); margin-bottom: 20px;">En el sector de las experiencias, no faltan "expertos en redes sociales", falta gente que sepa cómo se vende un tour un martes a las 10 de la mañana.</p>
+                <p style="font-size: 1.1rem; margin-bottom: 15px;">En Booking Lab nacimos para llenar el hueco que las pequeñas agencias no pueden cubrir: el de la optimización real. No te prometemos buenas reseñas, te prometemos fichas de producto optimizadas, mayor visibilidad en OTAs y una web que deje de ser un gasto para ser una inversión.</p>
+                <p style="font-size: 1.1rem;">Nos ensuciamos las manos con tus calendarios, tus precios y tu distribución porque sabemos que, en tu negocio, cada reserva cuenta.</p>
+                
+                <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.1);">
+                    <p style="font-weight: 700; font-size: 1.2rem; margin:0;">Joan Portillo</p>
+                    <p style="color: var(--accent-vibrant); font-weight: 600; margin:0;">Fundador & Growth Specialist</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="pdf-footer">
+            <span>Confidencial - Propiedad de Booking Lab</span>
+            <span>booking-lab.com</span>
+        </div>
+    </div>
+
+    <!-- PAGE 7: CONTACTO DA-->
+    <div class="pdf-page bg-dark" style="justify-content: center; align-items: center; text-align: center;">
+        
+        <h2 style="font-size: 3.5rem; color: white; margin-bottom: 20px; max-width: 80%;">¿Listo para que tu agencia despegue?</h2>
+        <p style="font-size: 1.5rem; color: rgba(255,255,255,0.7); margin-bottom: 40px;">Hablemos de cómo llevar tus ventas al siguiente nivel.</p>
+        
+        <div style="background: white; padding: 40px; border-radius: 12px; width: 60%; color: var(--navy-dark); text-align: center;">
+            <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 10px;">Solicita tu Diagnóstico Estratégico en:</p>
+            <p style="font-size: 2rem; color: var(--accent-vibrant); font-weight: 700; margin: 0;">booking-lab.com</p>
+            <p style="margin-top: 20px; font-size: 1.1rem; color: var(--text-muted);">o escríbenos a</p>
+            <p style="font-size: 1.5rem; font-weight: 600; margin: 0;">joanportillo@bookinglab.com</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
