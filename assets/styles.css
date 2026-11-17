@@ -237,3 +237,21 @@ footer ul a:hover{color:var(--accent-ink)}
 .simple-head .wrap{display:flex;align-items:center;justify-content:space-between;height:70px}
 .nf{min-height:70vh;display:grid;place-items:center;text-align:center;padding:40px 16px}
 .nf h1{font-size:clamp(4rem,14vw,8rem);color:var(--accent)}
+
+/* Selector de idioma */
+.nav-r{display:flex;align-items:center;gap:14px}
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:9px;padding:3px;background:var(--paper)}
+.lang a{font:600 .74rem "JetBrains Mono",monospace;padding:6px 8px;border-radius:6px;text-decoration:none;color:var(--muted);letter-spacing:.04em}
+.lang a:hover{color:var(--ink)}
+.lang a[aria-current]{background:var(--ink);color:#fff}
+@media (max-width:720px){.nav-r{margin-left:auto}}
+
+/* Menú: evita que los textos largos (catalán, inglés) se partan */
+.nav ul a,.nav .btn,.logo{white-space:nowrap}
+@media (max-width:1080px){
+  .nav ul{display:none;position:absolute;top:70px;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px 24px 14px}
+  .nav ul.open{display:flex}
+  .nav ul a{display:block;padding:12px 0}
+  .burger{display:block}
+  .nav-r{margin-left:auto}
+}

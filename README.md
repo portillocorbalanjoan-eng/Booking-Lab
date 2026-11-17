@@ -1,6 +1,6 @@
 # Booking Lab · Web
 
-Web estática de Booking Lab: software a medida para distribuidoras HORECA, agencias de transporte y empresas logísticas.
+Web estática de Booking Lab, en español (`/`), inglés (`/en/`) y catalán (`/ca/`): software a medida para distribuidoras HORECA, agencias de transporte y empresas logísticas.
 
 No necesita instalar nada ni compilar: son archivos HTML, CSS y JavaScript.
 
@@ -11,6 +11,9 @@ index.html          Página principal
 aviso-legal.html    Aviso legal (LSSI)
 privacidad.html     Política de privacidad (RGPD)
 404.html            Página de error
+en/                 Versión en inglés (index, legal-notice, privacy)
+ca/                 Versión en catalán (index, avis-legal, privacitat)
+vercel.json         Redirige /es a la portada (el español está en la raíz)
 robots.txt
 .nojekyll           Hace que GitHub Pages sirva los archivos tal cual
 assets/
@@ -46,3 +49,9 @@ El email de destino está en `assets/main.js`, en la línea `const EMAIL=...`.
 ## Antes de publicar
 
 - Revisa la cifra «casi 200 distribuidoras» de la sección de datos en `index.html`.
+
+## Idiomas
+
+- Español: `index.html` en la raíz. Inglés: `en/`. Catalán: `ca/`.
+- El selector ES · EN · CA está arriba a la derecha en cada página.
+- Si cambias un texto en español, cámbialo también en `en/index.html` y `ca/index.html`.
