@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /index_backup.html
+Disallow: /portfolio_es.html
+
+Sitemap: https://estibalab.com/sitemap.xml

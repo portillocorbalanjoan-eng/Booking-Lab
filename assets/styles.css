@@ -255,3 +255,12 @@ footer ul a:hover{color:var(--accent-ink)}
   .burger{display:block}
   .nav-r{margin-left:auto}
 }
+
+/* FAQ */
+.faq{max-width:860px;border-top:1px solid var(--line)}
+.faq-item{border-bottom:1px solid var(--line);padding:22px 0}
+.faq-item summary{cursor:pointer;list-style:none;font:700 1.15rem "Inter Tight",sans-serif;display:flex;justify-content:space-between;gap:20px}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:"+";font:600 1.3rem "JetBrains Mono",monospace;color:var(--accent);flex-shrink:0}
+.faq-item[open] summary::after{content:"–"}
+.faq-item p{color:var(--muted);margin-top:12px;max-width:760px}

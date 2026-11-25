@@ -1,6 +1,47 @@
 {
   "redirects": [
-    { "source": "/es", "destination": "/", "permanent": true },
-    { "source": "/es/:path*", "destination": "/:path*", "permanent": true }
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "booking-lab.com"
+        }
+      ],
+      "destination": "https://estibalab.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.booking-lab.com"
+        }
+      ],
+      "destination": "https://estibalab.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.estibalab.com"
+        }
+      ],
+      "destination": "https://estibalab.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/es/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
   ]
 }
