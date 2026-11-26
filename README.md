@@ -1,6 +1,6 @@
-# Booking Lab · Web
+# Estiba Lab · Web
 
-Web estática de Booking Lab, en español (`/`), inglés (`/en/`) y catalán (`/ca/`): software a medida para distribuidoras HORECA, agencias de transporte y empresas logísticas.
+Web estática de Estiba Lab (antes Booking Lab), en español (`/`), inglés (`/en/`) y catalán (`/ca/`): software a medida para distribuidoras HORECA, agencias de transporte y empresas logísticas.
 
 No necesita instalar nada ni compilar: son archivos HTML, CSS y JavaScript.
 
@@ -13,8 +13,9 @@ privacidad.html     Política de privacidad (RGPD)
 404.html            Página de error
 en/                 Versión en inglés (index, legal-notice, privacy)
 ca/                 Versión en catalán (index, avis-legal, privacitat)
-vercel.json         Redirige /es a la portada (el español está en la raíz)
-robots.txt
+vercel.json         Redirige booking-lab.com y www a estibalab.com, y /es a la portada
+robots.txt          Incluye la ruta del sitemap
+sitemap.xml         Mapa del sitio para Google (ES, EN, CA)
 .nojekyll           Hace que GitHub Pages sirva los archivos tal cual
 assets/
   styles.css        Estilos de toda la web
@@ -55,3 +56,7 @@ El email de destino está en `assets/main.js`, en la línea `const EMAIL=...`.
 - Español: `index.html` en la raíz. Inglés: `en/`. Catalán: `ca/`.
 - El selector ES · EN · CA está arriba a la derecha en cada página.
 - Si cambias un texto en español, cámbialo también en `en/index.html` y `ca/index.html`.
+
+## Hosting y dominio
+
+La web se sirve en Vercel. Dominio principal: `estibalab.com`. Los dominios `booking-lab.com`, `www.booking-lab.com` y `www.estibalab.com` deben estar añadidos al mismo proyecto de Vercel para que funcionen las redirecciones de `vercel.json`.
